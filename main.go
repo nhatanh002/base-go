@@ -9,7 +9,7 @@ import (
 	"base-go/common/logger"
 	gw_http "base-go/gateway/http"
 	"base-go/migrations"
-	"base-go/services"
+	cats_service "base-go/services/cats"
 	"context"
 	"log"
 	"net/http"
@@ -33,7 +33,7 @@ func mainEcho() {
 
 	logger.Info("Constructing dependencies...")
 	catRepo := cats_repo.NewCatsRepo(gormdb)
-	catsService := services.NewCatsService(catRepo)
+	catsService := cats_service.NewCatsService(catRepo)
 	catsInteractor := cats.NewCatsInteractor(catsService)
 	app := application.NewApp(catsInteractor)
 

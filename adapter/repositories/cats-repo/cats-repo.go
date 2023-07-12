@@ -2,7 +2,7 @@ package cats_repo
 
 import (
 	"base-go/domain/model"
-	"base-go/services"
+	implFor "base-go/services/requires"
 	"context"
 
 	"gorm.io/gorm"
@@ -12,7 +12,7 @@ type catsRepo struct {
 	db *gorm.DB
 }
 
-func NewCatsRepo(db *gorm.DB) services.CatsRepository {
+func NewCatsRepo(db *gorm.DB) implFor.CatsRepository {
 	return &catsRepo{db: db}
 }
 

@@ -1,23 +1,17 @@
-package services
+package cats
 
 import (
-	"base-go/application/cats"
+	implFor "base-go/application/requires"
 	"base-go/domain/model"
+	"base-go/services/requires"
 	"context"
 )
 
-// dependency signature
-type CatsRepository interface {
-	StoreCat(ctx context.Context, cat model.Cat) error
-	RetrieveCat(ctx context.Context, id string) (*model.Cat, error)
-}
-
-// impl
 type catsServiceImpl struct {
-	catRepo CatsRepository
+	catRepo requires.CatsRepository
 }
 
-func NewCatsService(catRepo CatsRepository) cats.CatsService {
+func NewCatsService(catRepo requires.CatsRepository) implFor.CatsService {
 	return &catsServiceImpl{catRepo}
 }
 
