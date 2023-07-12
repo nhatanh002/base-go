@@ -8,25 +8,23 @@ import (
 
 // dependency signature
 type CatsRepository interface {
-	AddCat(ctx context.Context, cat model.Cat) error
-	GetCat(ctx context.Context, id string) (*model.Cat, error)
+	StoreCat(ctx context.Context, cat model.Cat) error
+	RetrieveCat(ctx context.Context, id string) (*model.Cat, error)
 }
 
 // impl
-type CatsServiceImpl struct {
+type catsServiceImpl struct {
 	catRepo CatsRepository
 }
 
 func NewCatsService(catRepo CatsRepository) cats.CatsService {
-	return &CatsServiceImpl{catRepo}
+	return &catsServiceImpl{catRepo}
 }
 
-var _ cats.CatsService = &CatsServiceImpl{}
-
-func (svc *CatsServiceImpl) AddCat(ctx context.Context, cat model.Cat) error {
-	return svc.catRepo.AddCat(ctx, cat)
+func (svc *catsServiceImpl) AddCat(ctx context.Context, cat model.Cat) error {
+	return svc.catRepo.StoreCat(ctx, cat)
 }
 
-func (svc *CatsServiceImpl) GetCat(ctx context.Context, id string) (*model.Cat, error) {
-	return svc.catRepo.GetCat(ctx, id)
+func (svc *catsServiceImpl) GetCat(ctx context.Context, id string) (*model.Cat, error) {
+	return svc.catRepo.RetrieveCat(ctx, id)
 }
