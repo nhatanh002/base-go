@@ -51,7 +51,7 @@ func parseEnv() Env {
 			Host:            WithDefault("APP_DB_HOST", "localhost"),
 			Port:            WithDefault("APP_DB_PORT", 3306),
 			Username:        WithDefault("APP_DB_USERNAME", "dbuser"),
-			Password:        WithDefault("APP_DB_PASSWORD", ""),
+			Password:        WithDefault("APP_DB_PASSWORD", "db"),
 			DBname:          WithDefault("APP_DB_NAME", "defaultdb"),
 			DBbackend:       WithDefault("APP_DB_BACKEND", "mysql"),
 			MaxOpenConns:    WithDefault("APP_DB_CONN_MAX", 10),

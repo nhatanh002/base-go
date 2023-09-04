@@ -13,7 +13,7 @@ const CtxKeyTransaction = "ctx_key_transaction"
 
 func NewGormdb(cnf *config.Config) (db *gorm.DB) {
 	dbCnf := cnf.DBconfig
-	logger.Info("Connecting to database backend %s at %s@%h:%d/%s", dbCnf.DBbackend, dbCnf.Username, dbCnf.Host, dbCnf.Port, dbCnf.DBname)
+	logger.Info("Connecting to database backend %s at %s@%s:%d/%s", dbCnf.DBbackend, dbCnf.Username, dbCnf.Host, dbCnf.Port, dbCnf.DBname)
 	connString := fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local",
 		dbCnf.Username, dbCnf.Password, dbCnf.Host, dbCnf.Port, dbCnf.DBname)
 	switch dbCnf.DBbackend {
