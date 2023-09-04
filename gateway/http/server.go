@@ -43,5 +43,8 @@ func EchoRouter(cnf *config.Config, app *application.App) http.Handler {
 	catsController := controllers.NewCatsController(app.Cats)
 	catsController.Mount(e)
 
+	wsController := controllers.NewWsController()
+	wsController.Mount(e)
+
 	return e
 }
