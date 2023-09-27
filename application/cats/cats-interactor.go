@@ -1,9 +1,9 @@
 package cats
 
 import (
-	"base-go/application/requires"
 	"base-go/common/logger"
 	"base-go/domain/model"
+	"base-go/services/cats"
 	"context"
 	"time"
 
@@ -11,10 +11,10 @@ import (
 )
 
 type CatsInteractor struct {
-	catService requires.CatsService
+	catService *cats.CatsServiceImpl
 }
 
-func NewCatsInteractor(catService requires.CatsService) CatsInteractor {
+func NewCatsInteractor(catService *cats.CatsServiceImpl) CatsInteractor {
 	return CatsInteractor{catService}
 }
 
