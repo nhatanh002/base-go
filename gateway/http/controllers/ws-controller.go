@@ -27,7 +27,7 @@ func (controller *WsController) Ping(c echo.Context) error {
 	ws, err := upgrader.Upgrade(c.Response(), c.Request(), nil)
 	if err != nil {
 		logger.Error("Upgrade error: %s", err)
-		return err
+		return nil
 	}
 	defer ws.Close()
 	for {
@@ -35,7 +35,7 @@ func (controller *WsController) Ping(c echo.Context) error {
 		_, msg, err := ws.ReadMessage()
 		if err != nil {
 			logger.Error("Read error: %s", err)
-			return err
+			return nil
 		}
 		logger.Info("Client ping: %s", msg)
 		// Write
@@ -43,7 +43,7 @@ func (controller *WsController) Ping(c echo.Context) error {
 		err = ws.WriteMessage(websocket.TextMessage, []byte("pong"))
 		if err != nil {
 			logger.Error("Write error: %s", err)
-			return err
+			return nil
 		}
 
 	}
