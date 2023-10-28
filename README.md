@@ -1,4 +1,8 @@
 ## Base project for Golang
+### About this branch:
+- This `simplified` branch is only for Go beginner to have something concrete to build upon and not for production build.
+- Still enforces that the direction of dependency must always be from outer layers to inner layers.
+- The structure is much more direct than the `master` branch: there's no layer-boundary interfaces, and inner layers just directly import services from outer layers.
 ### Structure:
 * IO/Infra layer
   * adapter/

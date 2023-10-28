@@ -1,24 +1,23 @@
 package cats
 
 import (
-	implFor "base-go/application/requires"
+	cats_repo "base-go/adapter/repositories/cats-repo"
 	"base-go/domain/model"
-	"base-go/services/requires"
 	"context"
 )
 
-type catsServiceImpl struct {
-	catRepo requires.CatsRepository
+type CatsServiceImpl struct {
+	catRepo *cats_repo.CatsRepo
 }
 
-func NewCatsService(catRepo requires.CatsRepository) implFor.CatsService {
-	return &catsServiceImpl{catRepo}
+func NewCatsService(catRepo *cats_repo.CatsRepo) *CatsServiceImpl {
+	return &CatsServiceImpl{catRepo}
 }
 
-func (svc *catsServiceImpl) AddCat(ctx context.Context, cat model.Cat) error {
+func (svc *CatsServiceImpl) AddCat(ctx context.Context, cat model.Cat) error {
 	return svc.catRepo.StoreCat(ctx, cat)
 }
 
-func (svc *catsServiceImpl) GetCat(ctx context.Context, id string) (*model.Cat, error) {
+func (svc *CatsServiceImpl) GetCat(ctx context.Context, id string) (*model.Cat, error) {
 	return svc.catRepo.RetrieveCat(ctx, id)
 }
