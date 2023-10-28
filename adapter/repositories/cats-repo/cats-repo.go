@@ -21,6 +21,6 @@ func (r *CatsRepo) StoreCat(ctx context.Context, cat model.Cat) error {
 
 func (r *CatsRepo) RetrieveCat(ctx context.Context, id string) (*model.Cat, error) {
 	cat := model.Cat{}
-	err := r.db.First(&cat).Where("id = ?", id).Error
+	err := r.db.Where("id = ?", id).First(&cat).Error
 	return &cat, err
 }
